@@ -17,6 +17,7 @@ end
 if data.raw["agricultural-tower"]["agricultural-tower"] then
 	data.raw["agricultural-tower"]["agricultural-tower"] = null
 end
+
 local function delete_tree(name)
 	if data.raw["tree"][name] then
 		data.raw["tree"][name] = null
@@ -98,7 +99,6 @@ local function delete_tips(name)
 end
 
 -- Start change technologies
-
 if data.raw.technology["agricultural-science-pack"] then
 	data.raw.technology["agricultural-science-pack"].prerequisites = {"bioflux"}
 	data.raw.technology["agricultural-science-pack"].research_trigger = null
@@ -304,9 +304,6 @@ if data.raw.recipe["efficiency-module-3-recycling"] then
 	data.raw.recipe["efficiency-module-3-recycling"].category = "recycling"
 	data.raw.recipe["efficiency-module-3-recycling"].energy_required = 60/16
 end
-
-
-
 -- End Recipe editing
 
 --Start item editing
@@ -402,7 +399,6 @@ delete_recipe("biosulfur")
 delete_recipe("yumako-mash-recycling")
 delete_recipe("jelly-recycling")
 delete_recipe("burnt-spoilage")
-
 
 delete_item("yumako-seed")
 delete_item("jellynut-seed")
