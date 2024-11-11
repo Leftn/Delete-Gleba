@@ -23,4 +23,8 @@ if settings.startup["delete-gleba-disable-spoilage"].value then
 		data.raw.item["biter-egg"].spoil_to_trigger_result = null
 		data.raw.item["biter-egg"].default_import_location = "nauvis"
 	end
+	
+	if data.raw.item["spoilage"] then
+		data.raw.item["spoilage"] = null
+	end
 end

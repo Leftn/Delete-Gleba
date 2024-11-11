@@ -1,27 +1,11 @@
 require("prototypes.item")
 
-
-if settings.startup["delete-gleba-disable-spoilage"].value then
-	if data.raw.item["spoilage"] then
-		data.raw.item["spoilage"] = null
-	end
-	if data.raw.recipe["spoilage-recycling"] then
-		data.raw.recipe["spoilage-recycling"] = null
-	end
-end
-
 if data.raw["assembling-machine"]["biochamber"] then
 	data.raw["assembling-machine"]["biochamber"] = null
 end
 
 if data.raw["agricultural-tower"]["agricultural-tower"] then
 	data.raw["agricultural-tower"]["agricultural-tower"] = null
-end
-
-local function delete_tree(name)
-	if data.raw["tree"][name] then
-		data.raw["tree"][name] = null
-	end
 end
 
 if data.raw["spider-unit"]["small-stomper-pentapod"] then
@@ -42,6 +26,12 @@ end
 
 if data.raw["unit-spawner"]["gleba-spawner-small"] then
 	data.raw["unit-spawner"]["gleba-spawner-small"] = null
+end
+
+local function delete_tree(name)
+	if data.raw["tree"][name] then
+		data.raw["tree"][name] = null
+	end
 end
 
 local function delete_connection(name)
