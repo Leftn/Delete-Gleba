@@ -249,6 +249,8 @@ if data.raw.recipe["agricultural-science-pack"] then
 		{type = "item", name = "raw-fish", amount = 5},
 		{type = "item", name = "bioflux", amount = 5}
 	}
+	data.raw.recipe["agricultural-science-pack"].category = "crafting"
+	data.raw.recipe["agricultural-science-pack"].energy_required = 30
 	data.raw.recipe["agricultural-science-pack"].surface_conditions =
 	{
 		{
