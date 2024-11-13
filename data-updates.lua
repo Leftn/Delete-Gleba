@@ -1,92 +1,7 @@
+--TODO convert all deletion functions to generic delete
+
 require("prototypes.item")
-
-if data.raw["assembling-machine"]["biochamber"] then
-	data.raw["assembling-machine"]["biochamber"] = null
-end
-
-if data.raw["agricultural-tower"]["agricultural-tower"] then
-	data.raw["agricultural-tower"]["agricultural-tower"] = null
-end
-
-if data.raw["spider-unit"]["small-stomper-pentapod"] then
-	data.raw["spider-unit"]["small-stomper-pentapod"] = null
-end
-
-if data.raw["spider-unit"]["medium-stomper-pentapod"] then
-	data.raw["spider-unit"]["medium-stomper-pentapod"] = null
-end
-
-if data.raw["spider-unit"]["big-stomper-pentapod"] then
-	data.raw["spider-unit"]["big-stomper-pentapod"] = null
-end
-
-if data.raw["unit-spawner"]["gleba-spawner"] then
-	data.raw["unit-spawner"]["gleba-spawner"] = null
-end
-
-if data.raw["unit-spawner"]["gleba-spawner-small"] then
-	data.raw["unit-spawner"]["gleba-spawner-small"] = null
-end
-
-local function delete_tree(name)
-	if data.raw["tree"][name] then
-		data.raw["tree"][name] = null
-	end
-end
-
-local function delete_connection(name)
-	if data.raw["space-connection"][name] then
-		data.raw["space-connection"][name] = null
-	end
-end
-
-local function delete_tile(name)
-	if data.raw.tile[name] then
-		data.raw.tile[name] = null
-	end
-end
-
-local function delete_technology(name)
-	if data.raw.technology[name] then
-		data.raw.technology[name] = null
-	end
-end
-
-local function delete_recipe(name)
-	if data.raw.recipe[name] then
-		data.raw.recipe[name] = null
-	end
-end
-
-local function delete_entity(name)
-	if data.raw["simple-entity"][name] then
-		data.raw["simple-entity"][name] = null
-	end
-end
-
-local function delete_item(name)
-	if data.raw.item[name] then
-		data.raw.item[name] = null
-	end
-end
-
-local function delete_plant(name)
-	if data.raw.plant[name] then
-		data.raw.plant[name] = null
-	end
-end
-
-local function delete_capsule(name)
-	if data.raw.capsule[name] then
-		data.raw.capsule[name] = null
-	end
-end
-
-local function delete_tips(name)
-	if data.raw["tips-and-tricks-item"][name] then
-		data.raw["tips-and-tricks-item"][name] = null
-	end
-end
+require("prototypes.recipe")
 
 -- Start change technologies
 if data.raw.technology["agricultural-science-pack"] then
@@ -199,16 +114,6 @@ end
 -- End change technologies
 
 -- Start Recipe editing
-if data.raw.recipe["bioflux"] then
-	data.raw.recipe["bioflux"].ingredients =
-	{
-		{type = "item", name = "tungsten-ore", amount = 2},
-		{type = "item", name = "stone", amount = 5},
-		{type = "fluid", name = "holmium-solution", amount = 20}
-	}
-	data.raw.recipe["bioflux"].category = "crafting-with-fluid"
-	data.raw.recipe["bioflux"].results = {{type="item", name="bioflux", amount=1}}
-end
 
 if data.raw.recipe["carbon-fiber"] then
 	data.raw.recipe["carbon-fiber"].ingredients =
@@ -294,6 +199,17 @@ if data.raw.recipe["efficiency-module-3-recycling"] then
 	data.raw.recipe["efficiency-module-3-recycling"].category = "recycling"
 	data.raw.recipe["efficiency-module-3-recycling"].energy_required = 60/16
 end
+
+if data.raw.recipe["bioflux"] then
+	data.raw.recipe["bioflux"].ingredients =
+	{
+		{type = "item", name = "tungsten-ore", amount = 2},
+		{type = "item", name = "stone", amount = 5},
+		{type = "fluid", name = "holmium-solution", amount = 20}
+	}
+	data.raw.recipe["bioflux"].category = "crafting-with-fluid"
+	data.raw.recipe["bioflux"].results = {{type="item", name="bioflux", amount=1}}
+end
 -- End Recipe editing
 
 --Start item editing
@@ -333,104 +249,108 @@ if data.raw["group-attack-achievement"]["it-stinks-and-they-do-like-it"] then
 end
 --
 
-delete_technology("planet-discovery-gleba")
-delete_technology("agriculture")
-delete_technology("yumako")
-delete_technology("jellynut")
-delete_technology("biochamber")
-delete_technology("artificial-soil")
-delete_technology("bacteria-cultivation")
-delete_technology("bioflux-processing")
-delete_technology("overgrowth-soil")
-delete_technology("tree-seeding")
-delete_technology("fish-breeding")
+delete_generic("fish-breeding", "technology")
+delete_generic("tree-seeding", "technology")
+delete_generic("overgrowth-soil", "technology")
+delete_generic("bioflux-processing", "technology")
+delete_generic("bacteria-cultivation", "technology")
+delete_generic("artificial-soil", "technology")
+delete_generic("biochamber", "technology")
+delete_generic("jellynut", "technology")
+delete_generic("yumako", "technology")
+delete_generic("planet-discovery-gleba", "technology")
+delete_generic("agriculture", "technology")
+delete_generic("gleba-briefing", "tips-and-tricks-item")
+delete_generic("spoilables-result", "tips-and-tricks-item")
+delete_generic("agriculture", "tips-and-tricks-item")
 
-delete_tips("gleba-briefing")
-delete_tips("spoilables-result")
-delete_tips("agriculture")
+delete_generic("yumako-processing", "recipe")
+delete_generic("jellynut-processing", "recipe")
+delete_generic("artificial-yumako-soil", "recipe")
+delete_generic("artificial-jellynut-soil", "recipe")
+delete_generic("overgrowth-yumako-soil", "recipe")
+delete_generic("overgrowth-jellynut-soil", "recipe")
+delete_generic("iron-bacteria", "recipe")
+delete_generic("copper-bacteria", "recipe")
+delete_generic("iron-bacteria-cultivation", "recipe")
+delete_generic("copper-bacteria-cultivation", "recipe")
+delete_generic("nutrients-from-spoilage", "recipe")
+delete_generic("nutrients-from-yumako-mash", "recipe")
+delete_generic("nutrients-from-jelly", "recipe")
+delete_generic("nutrients-from-bioflux", "recipe")
+delete_generic("pentapod-egg", "recipe")
+delete_generic("agricultural-tower", "recipe")
+delete_generic("biochamber", "recipe")
+delete_generic("nutrients-from-fish", "recipe")
+delete_generic("nutrients-from-biter-egg", "recipe")
+delete_generic("artificial-yumako-soil-recycling", "recipe")
+delete_generic("artificial-jellynut-soil-recycling", "recipe")
+delete_generic("overgrowth-yumako-soil-recycling", "recipe")
+delete_generic("overgrowth-jellynut-soil-recycling", "recipe")
+delete_generic("biochamber-recycling", "recipe")
+delete_generic("nutrients-recycling", "recipe")
+delete_generic("pentapod-egg-recycling", "recipe")
+delete_generic("agricultural-tower-recycling", "recipe")
+delete_generic("yumako-recycling", "recipe")
+delete_generic("jellynut-recycling", "recipe")
+delete_generic("iron-bacteria-recycling", "recipe")
+delete_generic("copper-bacteria-recycling", "recipe")
+delete_generic("yumako-seed-recycling", "recipe")
+delete_generic("jellynut-seed-recycling", "recipe")
+delete_generic("rocket-fuel-from-jelly", "recipe")
+delete_generic("bioplastic", "recipe")
+delete_generic("biolubricant", "recipe")
+delete_generic("biosulfur", "recipe")
+delete_generic("yumako-mash-recycling", "recipe")
+delete_generic("jelly-recycling", "recipe")
+delete_generic("burnt-spoilage", "recipe")
 
-delete_recipe("yumako-processing")
-delete_recipe("jellynut-processing")
-delete_recipe("artificial-yumako-soil")
-delete_recipe("artificial-jellynut-soil")
-delete_recipe("overgrowth-yumako-soil")
-delete_recipe("overgrowth-jellynut-soil")
-delete_recipe("iron-bacteria")
-delete_recipe("copper-bacteria")
-delete_recipe("iron-bacteria-cultivation")
-delete_recipe("copper-bacteria-cultivation")
-delete_recipe("nutrients-from-spoilage")
-delete_recipe("nutrients-from-yumako-mash")
-delete_recipe("nutrients-from-jelly")
-delete_recipe("nutrients-from-bioflux")
-delete_recipe("pentapod-egg")
-delete_recipe("agricultural-tower")
-delete_recipe("biochamber")
-delete_recipe("nutrients-from-fish")
-delete_recipe("nutrients-from-biter-egg")
-delete_recipe("artificial-yumako-soil-recycling")
-delete_recipe("artificial-jellynut-soil-recycling")
-delete_recipe("overgrowth-yumako-soil-recycling")
-delete_recipe("overgrowth-jellynut-soil-recycling")
-delete_recipe("biochamber-recycling")
-delete_recipe("nutrients-recycling")
-delete_recipe("pentapod-egg-recycling")
-delete_recipe("agricultural-tower-recycling")
-delete_recipe("yumako-recycling")
-delete_recipe("jellynut-recycling")
-delete_recipe("iron-bacteria-recycling")
-delete_recipe("copper-bacteria-recycling")
-delete_recipe("yumako-seed-recycling")
-delete_recipe("jellynut-seed-recycling")
-delete_recipe("rocket-fuel-from-jelly")
-delete_recipe("bioplastic")
-delete_recipe("biolubricant")
-delete_recipe("biosulfur")
-delete_recipe("yumako-mash-recycling")
-delete_recipe("jelly-recycling")
-delete_recipe("burnt-spoilage")
+delete_generic("yumako-seed", "item")
+delete_generic("jellynut-seed", "item")
+delete_generic("iron-bacteria", "item")
+delete_generic("copper-bacteria", "item")
+delete_generic("nutrients", "item")
+delete_generic("agricultural-tower", "item")
+delete_generic("biochamber", "item")
+delete_generic("artificial-yumako-soil", "item")
+delete_generic("artificial-jellynut-soil", "item")
+delete_generic("overgrowth-yumako-soil", "item")
+delete_generic("overgrowth-jellynut-soil", "item")
+delete_generic("pentapod-egg", "item")
 
-delete_item("yumako-seed")
-delete_item("jellynut-seed")
-delete_item("iron-bacteria")
-delete_item("copper-bacteria")
-delete_item("nutrients")
-delete_item("agricultural-tower")
-delete_item("biochamber")
-delete_item("artificial-yumako-soil")
-delete_item("artificial-jellynut-soil")
-delete_item("overgrowth-yumako-soil")
-delete_item("overgrowth-jellynut-soil")
-delete_item("pentapod-egg")
+delete_generic("yumako", "capsule")
+delete_generic("jellynut", "capsule")
+delete_generic("jelly", "capsule")
+delete_generic("yumako-mash", "capsule")
 
-delete_capsule("yumako")
-delete_capsule("jellynut")
-delete_capsule("jelly")
-delete_capsule("yumako-mash")
+delete_generic("yumako-tree", "plant")
+delete_generic("jellystem", "plant")
 
-delete_plant("yumako-tree")
-delete_plant("jellystem")
+delete_generic("slipstack", "tree")
+delete_generic("funneltrunk", "tree")
+delete_generic("cuttlepop", "tree")
+delete_generic("hairyclubnub", "tree")
+delete_generic("teflilly", "tree")
+delete_generic("lickmaw", "tree")
+delete_generic("stingfrond", "tree")
+delete_generic("boompuff", "tree")
+delete_generic("sunnycomb", "tree")
 
-delete_tree("slipstack")
-delete_tree("funneltrunk")
-delete_tree("cuttlepop")
-delete_tree("hairyclubnub")
-delete_tree("teflilly")
-delete_tree("lickmaw")
-delete_tree("stingfrond")
-delete_tree("boompuff")
-delete_tree("sunnycomb")
+delete_generic("small-stomper-shell", "simple-entity")
+delete_generic("medium-stomper-shell", "simple-entity")
+delete_generic("big-stomper-shell", "simple-entity")
 
-delete_entity("small-stomper-shell")
-delete_entity("medium-stomper-shell")
-delete_entity("big-stomper-shell")
+delete_generic("artificial-yumako-soil", "tile")
+delete_generic("artificial-jellynut-soil", "tile")
+delete_generic("overgrowth-yumako-soil", "tile")
+delete_generic("overgrowth-jellynut-soil", "tile")
 
-delete_connection("nauvis-gleba")
-delete_connection("vulcanus-gleba")
-delete_connection("gleba-fulgora")
-delete_connection("gleba-aquilo")
+delete_generic("biochamber", "assembling-machine")
+delete_generic("agricultural-tower", "agricultural-tower")
 
-delete_tile("artificial-yumako-soil")
-delete_tile("artificial-jellynut-soil")
-delete_tile("overgrowth-yumako-soil")
-delete_tile("overgrowth-jellynut-soil")
+delete_generic("small-stomper-pentapod", "spider-unit")
+delete_generic("medium-stomper-pentapod", "spider-unit")
+delete_generic("big-stomper-pentapod", "spider-unit")
+
+delete_generic("gleba-spawner", "unit-spawner")
+delete_generic("gleba-spawner-small", "unit-spawner")
