@@ -1,9 +1,17 @@
 {
 	"name": "delete-gleba",
+<<<<<<< HEAD
 	"version": "0.0.3",
 	"title": "Delete Gleba",
 	"author": "Leftn",
 	"factorio_version": "2.0",
 	"dependencies": ["base >= 2.0.0", "space-age >= 2.0.15", "delete-planet-compatability >= 0.0.1"],
+=======
+	"version": "0.0.2",
+	"title": "Delete Gleba",
+	"author": "Leftn",
+	"factorio_version": "2.0",
+	"dependencies": ["base >= 2.0.0", "space-age >= 2.0.15"],
+>>>>>>> dd8e2094887b4a8dd8fcd7a5cf9b6c4ccd2e56e4
 	"description": "I hate Gleba. This mod deletes Gleba and moves it's research and products to use stuff from Fulgora and Vulcanus"
 }
