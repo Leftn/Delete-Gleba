@@ -16,3 +16,9 @@ Date: 15.11.2024
   Changes:
     - Refactored internal funcions to reduce mod size
     - Moved various changes to the now required delete-planet-compatability mod
+---------------------------------------------------------------------------------------------------
+Version: 0.0.4
+Date: 16.11.2024
+  Compatability:
+    - Changed deleted items to now be hidden instead
+---------------------------------------------------------------------------------------------------
