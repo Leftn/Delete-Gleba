@@ -1,0 +1,18 @@
+---------------------------------------------------------------------------------------------------
+Version: 0.0.1
+Date: 10.11.2024
+  Changes:
+    - Initial release
+---------------------------------------------------------------------------------------------------
+Version: 0.0.2
+Date: 11.11.2024
+  Bugfixes:
+    - Fixed Agricultural Science Pack not having a crafting method.
+---------------------------------------------------------------------------------------------------
+Version: 0.0.3
+Date: 15.11.2024
+  Bugfixes:
+    - Fixed various recipes
+  Changes:
+    - Refactored internal funcions to reduce mod size
+    - Moved various changes to the now required delete-planet-compatability mod

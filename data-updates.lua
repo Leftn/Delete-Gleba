@@ -1,4 +1,4 @@
---TODO convert all deletion functions to generic delete
+local recycling = require("__quality__.prototypes.recycling")
 
 require("prototypes.item")
 require("prototypes.recipe")
@@ -114,7 +114,6 @@ end
 -- End change technologies
 
 -- Start Recipe editing
-
 if data.raw.recipe["carbon-fiber"] then
 	data.raw.recipe["carbon-fiber"].ingredients =
 	{
@@ -122,9 +121,7 @@ if data.raw.recipe["carbon-fiber"] then
 		{type = "item", name = "bioflux", amount = 20}
 	}
 	data.raw.recipe["carbon-fiber"].category = "chemistry"
-	data.raw.recipe["carbon-fiber"].subgroup = "raw-material"
-	data.raw.recipe["carbon-fiber"].order = "a[raw-material]-h[carbon-fiber]"
-	data.raw.recipe["carbon-fiber"].results = {{type="item", name="carbon-fiber", amount=3}}
+	data.raw.recipe["carbon-fiber"].results = {{type="item", name="carbon-fiber", amount=2}}
 end
 
 if data.raw.recipe["stack-inserter"] then
@@ -144,6 +141,8 @@ if data.raw.recipe["agricultural-science-pack"] then
 		{type = "item", name = "raw-fish", amount = 5},
 		{type = "item", name = "bioflux", amount = 5}
 	}
+	data.raw.recipe["agricultural-science-pack"].category = "crafting"
+	data.raw.recipe["agricultural-science-pack"].energy_required = 30
 	data.raw.recipe["agricultural-science-pack"].surface_conditions =
 	{
 		{
@@ -152,6 +151,7 @@ if data.raw.recipe["agricultural-science-pack"] then
 			max = 1000
 		}
 	}
+	
 end
 
 if data.raw.recipe["efficiency-module-3"] then
@@ -170,34 +170,6 @@ if data.raw.recipe["fish-breeding"] then
 		{type = "item", name = "raw-fish", amount = 2}
 	}
 	data.raw.recipe["fish-breeding"].category = "chemistry"
-end
-
-if data.raw.recipe["stack-inserter-recycling"] then
-	data.raw.recipe["stack-inserter-recycling"].ingredients = {
-		{type = "item", name = "stack-inserter", amount = 1},
-	}
-    data.raw.recipe["stack-inserter-recycling"].results = {
-		{type = "item", name = "processing-unit", amount = 1, probability = 0.11, ignored_by_stats = 1},
-		{type = "item", name = "carbon-fiber", amount = 1, probability = 0.11, ignored_by_stats = 1},
-		{type = "item", name = "bioflux", amount = 1, probability = 0.66, ignored_by_stats = 1},
-		{type = "item", name = "bulk-inserter", amount = 1, probability = 0.11, ignored_by_stats = 1}
-	}
-	data.raw.recipe["stack-inserter-recycling"].category = "recycling"
-	data.raw.recipe["stack-inserter-recycling"].energy_required = 0.5
-end
-
-if data.raw.recipe["efficiency-module-3-recycling"] then
-	data.raw.recipe["efficiency-module-3-recycling"].ingredients = {
-		{type = "item", name = "efficiency-module-3", amount = 1},
-	}
-    data.raw.recipe["efficiency-module-3-recycling"].results = {
-		{type = "item", name = "processing-unit", amount = 1, probability = 0.25, ignored_by_stats = 1},
-		{type = "item", name = "advanced-circuit", amount = 1, probability = 0.25, ignored_by_stats = 1},
-		{type = "item", name = "bioflux", amount = 1, probability = 0.25, ignored_by_stats = 1},
-		{type = "item", name = "efficiency-module-2", amount = 1, probability = 0.25, ignored_by_stats = 1}
-	}
-	data.raw.recipe["efficiency-module-3-recycling"].category = "recycling"
-	data.raw.recipe["efficiency-module-3-recycling"].energy_required = 60/16
 end
 
 if data.raw.recipe["bioflux"] then
@@ -248,6 +220,19 @@ if data.raw["group-attack-achievement"]["it-stinks-and-they-do-like-it"] then
 	}
 end
 --
+
+data.raw.planet["gleba"].map_gen_settings = null
+if data.raw.planet["gleba"] then
+	data.raw.planet["gleba"].hidden = true
+end
+
+
+data.raw["utility-constants"]["default"].main_menu_simulations.gleba_agri_towers = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
+data.raw["utility-constants"]["default"].main_menu_simulations.gleba_pentapod_ponds = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
+data.raw["utility-constants"]["default"].main_menu_simulations.gleba_egg_escape = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
+data.raw["utility-constants"]["default"].main_menu_simulations.gleba_farm_attack = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
+data.raw["utility-constants"]["default"].main_menu_simulations.gleba_grotto = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
+
 
 delete_generic("fish-breeding", "technology")
 delete_generic("tree-seeding", "technology")
@@ -354,3 +339,6 @@ delete_generic("big-stomper-pentapod", "spider-unit")
 
 delete_generic("gleba-spawner", "unit-spawner")
 delete_generic("gleba-spawner-small", "unit-spawner")
+
+recycling.generate_recycling_recipe(data.raw.recipe["stack-inserter"])
+recycling.generate_recycling_recipe(data.raw.recipe["efficiency-module-3"])
