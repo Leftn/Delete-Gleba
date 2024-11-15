@@ -30,6 +30,6 @@ if settings.startup["delete-gleba-disable-spoilage"].value then
 	end
 	
 	if data.raw.item["spoilage"] then
-		data.raw.item["spoilage"] = null
+		data.raw.item["spoilage"].hidden = true
 	end
 end
