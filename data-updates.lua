@@ -226,14 +226,6 @@ if data.raw.planet["gleba"] then
 	data.raw.planet["gleba"].hidden = true
 end
 
-
-data.raw["utility-constants"]["default"].main_menu_simulations.gleba_agri_towers = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
-data.raw["utility-constants"]["default"].main_menu_simulations.gleba_pentapod_ponds = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
-data.raw["utility-constants"]["default"].main_menu_simulations.gleba_egg_escape = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
-data.raw["utility-constants"]["default"].main_menu_simulations.gleba_farm_attack = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
-data.raw["utility-constants"]["default"].main_menu_simulations.gleba_grotto = data.raw["utility-constants"]["default"].main_menu_simulations.platform_science
-
-
 delete_generic("fish-breeding", "technology")
 delete_generic("tree-seeding", "technology")
 delete_generic("overgrowth-soil", "technology")
