@@ -6,7 +6,7 @@ require("prototypes.recipe")
 -- Start change technologies
 if data.raw.technology["agricultural-science-pack"] then
 	data.raw.technology["agricultural-science-pack"].prerequisites = {"bioflux"}
-	data.raw.technology["agricultural-science-pack"].research_trigger = null
+	data.raw.technology["agricultural-science-pack"].research_trigger = nil
 	data.raw.technology["agricultural-science-pack"].unit =
     {
       ingredients =
@@ -37,12 +37,12 @@ if data.raw.technology["heating-tower"] then
       time = 30,
       count = 1000
     }
-	data.raw.technology["heating-tower"].research_trigger = null
+	data.raw.technology["heating-tower"].research_trigger = nil
 end
 
 if data.raw.technology["bioflux"] then
 	data.raw.technology["bioflux"].prerequisites = {"space-science-pack", "electromagnetic-science-pack", "metallurgic-science-pack"}
-	data.raw.technology["bioflux"].research_trigger = null
+	data.raw.technology["bioflux"].research_trigger = nil
 	data.raw.technology["bioflux"].unit =
     {
 		ingredients =
@@ -200,11 +200,11 @@ end
 
 --Start Entity editing
 if data.raw["simple-entity"]["iron-stromatolite"] then
-	data.raw["simple-entity"]["iron-stromatolite"].minable = null
+	data.raw["simple-entity"]["iron-stromatolite"].minable = nil
 end
 
 if data.raw["simple-entity"]["copper-stromatolite"] then
-	data.raw["simple-entity"]["copper-stromatolite"].minable = null
+	data.raw["simple-entity"]["copper-stromatolite"].minable = nil
 end
 -- End entity editing
 
@@ -221,7 +221,7 @@ if data.raw["group-attack-achievement"]["it-stinks-and-they-do-like-it"] then
 end
 --
 
-data.raw.planet["gleba"].map_gen_settings = null
+data.raw.planet["gleba"].map_gen_settings = nil
 if data.raw.planet["gleba"] then
 	data.raw.planet["gleba"].hidden = true
 end
